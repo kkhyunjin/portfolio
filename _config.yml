@@ -1,0 +1,10 @@
+
+
+# Site Settings
+locale                   : "en-US"
+title                    : "hyunjin"
+title_separator          : "-"
+subtitle                 : portfolio
+name                     : "hyunjin"
+description              : "portfolio"
+url                      : "https://kkhyunjin.github.io"
