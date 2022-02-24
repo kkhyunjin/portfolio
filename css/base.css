@@ -20,8 +20,11 @@ article,aside,footer,header,menu,nav,section,summary{display:block}
 .clfix{zoom:1}
 
 body{background-color:#2a1fbe;}
-.wrap{}
-.wrap header{font-family: 'Rozha One', serif;font-size:100px;line-height:120px;font-weight:600;color:#c4ff5c}
+.wrap{width:calc(100% - 80px);max-width:1700px;padding:0 40px;}
+.wrap header{position:relative;height:100vh;font-family: 'Rozha One', serif;font-size:100px;line-height:120px;font-weight:600;color:#c4ff5c}
+.wrap header .header_inner{position:absolute;top:50%;transform:translateY(-50%);}
 .wrap header h1{font-size:100px;line-height:120px;color:#fff;font-weight:600;}
 
-.wrap section h2{font-family: 'NanumMyeongjoOTF', serif;color:#fff;}
+.wrap section{display:flex;justify-content:space-between;}
+.wrap section h2{width:25%;font-family: 'NanumMyeongjoOTF', serif;color:#fff;font-size: 50px;}
+.wrap section .thum{float:right;width:70%;}
