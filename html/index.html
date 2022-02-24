@@ -82,7 +82,7 @@
 		</section>
 	</div>
 	
-	<a target="_blank" rel="noopener" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=hyunjin@naver.com" class="header__mail js-mail-address" aria-label="메일주소" style="opacity: 0.991432; transform: matrix3d(0.996141, 0.0447184, 0, 0, -0.0447184, 0.996141, 0, 0, 0, 0, 1, 0, 0, 2.91309, 0, 1);">contact<br>me</a>
+	<a target="_blank" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=hyunjin@naver.com" class="link_contact" aria-label="메일주소">CONTACT<br>ME<span></span></a>
 </div>
 
 
@@ -91,7 +91,13 @@
 <script type="text/javascript" src="../js/common.js"></script>
 <script type="text/javascript">
 $(function(){
-	
+	$(window).on('scroll' ,function(e){
+		let wst = $(window).scrollTop();
+		let lc = $('.link_contact').offset().top - 400;
+		if(wst >= lc){
+			$('.link_contact').addClass('on');
+		};
+	});
 });
 </script>
 </html>
