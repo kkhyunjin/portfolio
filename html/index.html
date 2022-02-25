@@ -24,7 +24,7 @@
 	</header>
 	
 	<div class="content">
-		<section>
+		<section class="list1">
 			<h2>신한카드<br>22.01~</h2>
 			<div class="thum">
 				<a href="#" target="_blank" aria-label="신한카드 사이트 이동">
@@ -32,7 +32,7 @@
 				</a>
 			</div>
 		</section>
-		<section>
+		<section class="list2">
 			<h2>농협카드<br>21.05 ~<br>21.12</h2>
 			<div class="thum">
 				<a href="#" target="_blank" aria-label="신한카드 사이트 이동">
@@ -40,7 +40,7 @@
 				</a>
 			</div>
 		</section>
-		<section>
+		<section class="list3">
 			<h2>삼성카드<br>16.05 ~<br>21.03</h2>
 			<div class="thum">
 				<a href="#" target="_blank" aria-label="신한카드 사이트 이동">
@@ -48,7 +48,7 @@
 				</a>
 			</div>
 		</section>
-		<section>
+		<section class="list4">
 			<h2>sc제일은행<br>디지털뱅킹<br>솔루션</h2>
 			<div class="thum">
 				<a href="#" target="_blank" aria-label="신한카드 사이트 이동">
@@ -56,7 +56,7 @@
 				</a>
 			</div>
 		</section>
-		<section>
+		<section class="list5">
 			<h2>한화탈레스<br>16.01 ~<br>16.05</h2>
 			<div class="thum">
 				<a href="#" target="_blank" aria-label="신한카드 사이트 이동">
@@ -64,7 +64,7 @@
 				</a>
 			</div>
 		</section>
-		<section>
+		<section class="list6">
 			<h2>SKT<br>TWORLD<br>APP<br>15.01 ~<br>16.01</h2>
 			<div class="thum">
 				<a href="#" target="_blank" aria-label="신한카드 사이트 이동">
@@ -72,11 +72,12 @@
 				</a>
 			</div>
 		</section>
-		<section>
+		<section class="list7">
 			<h2>신한카드<br>14.07 ~<br>14.07</h2>
 			<div class="thum">
 				<a href="#" target="_blank" aria-label="신한카드 사이트 이동">
 					<img src="../img/img_portfolio07.png" alt="신한카드">
+					<span class="obj "></span>
 				</a>
 			</div>
 		</section>
@@ -91,12 +92,51 @@
 <script type="text/javascript" src="../js/common.js"></script>
 <script type="text/javascript">
 $(function(){
+	function scroll_event(t, flag){
+		let wst = $(window).scrollTop();
+		let wh = $(window).height();
+
+		let lco = t.offset().top;
+		let lh = t.outerHeight();
+		let lc = lco - 200;
+		
+		if(flag == 'on'){
+			t.addClass('on');
+		}else{
+			t.removeClass('on');
+		};
+	};
 	$(window).on('scroll' ,function(e){
 		let wst = $(window).scrollTop();
-		let lc = $('.link_contact').offset().top - 400;
-		if(wst >= lc){
-			$('.link_contact').addClass('on');
-		};
+		let wh = $(window).height();
+		let list1 = $('.list1');
+		let list2 = $('.list2');
+		let list3 = $('.list3');
+		let list4 = $('.list4');
+		let list5 = $('.list5');
+		let list6 = $('.list6');
+		let list7 = $('.list7');
+		let link_contact = $('.link_contact');
+		let on = 'on';
+		let off = 'off';
+
+		if(list1.offset().top -200 <= wst ){scroll_event(list1, on);}
+		else if(wst + wh <= list1.offset().top){scroll_event(list1, off);};
+		if(list2.offset().top -200 <= wst ){scroll_event(list2, on);}
+		else if(wst + wh <= list2.offset().top){scroll_event(list2, off);};
+		if(list3.offset().top -200 <= wst ){scroll_event(list3, on);}
+		else if(wst + wh <= list3.offset().top){scroll_event(list3, off);};
+		if(list4.offset().top -200 <= wst ){scroll_event(list4, on);}
+		else if(wst + wh <= list4.offset().top){scroll_event(list4, off);};
+		if(list5.offset().top -200 <= wst ){scroll_event(list5, on);}
+		else if(wst + wh <= list5.offset().top){scroll_event(list5, off);};
+		if(list6.offset().top -200 <= wst ){scroll_event(list6, on);}
+		else if(wst + wh <= list6.offset().top){scroll_event(list6, off);};
+		if(list7.offset().top -200 <= wst ){scroll_event(list7, on);}
+		else if(wst + wh <= list7.offset().top){scroll_event(list7, off);};
+		if(link_contact.offset().top -300 <= wst ){scroll_event(link_contact, on);}
+		else if(wst + wh <= link_contact.offset().top){scroll_event(link_contact, off);};
+
 	});
 });
 </script>
