@@ -11,14 +11,32 @@
 <div class="wrap">
 
 	<header>
-		<div class="header_inner">
-			<h1>
-				UI<br>
-				DEVELOPER<br>
-				KIM HYUN JIN
-			</h1>
+		<h1 class="hide">UI DEVELOPER KIM HYUN JIN</h1>
+		<div class="header_inner" tabindex="-1">
+			<span class="img_hello"></span>
+			<div class="name">
+				<div>
+					<strong>
+						UI<br>
+						DEVELOPER<br>
+						KIM HYUN JIN
+					</strong>
+				</div>
+				<div>
+					<strong>
+						UI<br>
+						DEVELOPER<br>
+						KIM HYUN JIN
+					</strong>
+				</div>
+			</div>
 			<div class="skill">
-				HTML5 &nbsp;CSS3<br>JQUERY &nbsp;GIT
+				<div>
+					<strong>HTML5 &nbsp;CSS3<br>JQUERY &nbsp;GIT</strong>
+				</div>
+				<div>
+					<strong>HTML5 &nbsp;CSS3<br>JQUERY &nbsp;GIT</strong>
+				</div>
 			</div>
 		</div>
 	</header>
@@ -143,6 +161,12 @@ $(function(){
 		if(link_contact.offset().top -300 <= wst ){scroll_event(link_contact, on);}
 		else if(wst + wh <= link_contact.offset().top){scroll_event(link_contact, off);};
 
+
+		if(wst!= '0'){
+			$('.header_inner').addClass('on');
+		}else{
+			$('.header_inner').removeClass('on');
+		};
 	});
 });
 </script>
