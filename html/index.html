@@ -42,7 +42,7 @@
 	</header>
 	
 	<div class="content">
-		<section class="list1">
+		<section class="list1 ani">
 			<h2>신한카드<br>22.01~</h2>
 			<div class="thum">
 				<a href="https://www.shinhancard.com/" target="_blank" aria-label="신한카드 사이트 이동">
@@ -51,7 +51,7 @@
 				</a>
 			</div>
 		</section>
-		<section class="list2">
+		<section class="list2 ani">
 			<h2>농협카드<br>21.05 ~<br>21.12</h2>
 			<div class="thum">
 				<a href="https://card.nonghyup.com/IpCc0001M.act" target="_blank" aria-label="농협카드 사이트 이동">
@@ -60,7 +60,7 @@
 				</a>
 			</div>
 		</section>
-		<section class="list3">
+		<section class="list3 ani">
 			<h2>삼성카드<br>16.05 ~<br>21.03</h2>
 			<div class="thum">
 				<a href="https://www.samsungcard.com/personal/main/UHPPCO0101M0.jsp" target="_blank" aria-label="삼성카드 사이트 이동">
@@ -69,7 +69,7 @@
 				</a>
 			</div>
 		</section>
-		<section class="list4">
+		<section class="list4 ani">
 			<h2>sc제일은행<br>디지털뱅킹<br>솔루션<br>16.02 ~<br>16.04</h2>
 			<div class="thum">
 				<a href="#">
@@ -78,7 +78,7 @@
 				</a>
 			</div>
 		</section>
-		<section class="list5">
+		<section class="list5 ani">
 			<h2>한화탈레스<br>16.01 ~<br>16.02</h2>
 			<div class="thum">
 				<a href="#">
@@ -87,7 +87,7 @@
 				</a>
 			</div>
 		</section>
-		<section class="list6">
+		<section class="list6 ani">
 			<h2>SKT<br>TWORLD<br>APP<br>15.01 ~<br>16.01</h2>
 			<div class="thum">
 				<a href="#">
@@ -96,7 +96,7 @@
 				</a>
 			</div>
 		</section>
-		<section class="list7">
+		<section class="list7 ani">
 			<h2>롯데면세점 다국어<br>14.07 ~<br>14.09</h2>
 			<div class="thum">
 				<a href="#">
@@ -107,7 +107,7 @@
 		</section>
 	</div>
 	
-	<a target="_blank" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=hyunjin@naver.com" class="link_contact" aria-label="메일주소">CONTACT<br>ME<span></span></a>
+	<a target="_blank" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=hyunjin@naver.com" class="link_contact ani" aria-label="메일주소">CONTACT<br>ME<span></span></a>
 </div>
 
 
@@ -117,13 +117,6 @@
 <script type="text/javascript">
 $(function(){
 	function scroll_event(t, flag){
-		let wst = $(window).scrollTop();
-		let wh = $(window).height();
-
-		let lco = t.offset().top;
-		let lh = t.outerHeight();
-		let lc = lco - 200;
-		
 		if(flag == 'on'){
 			t.addClass('on');
 		}else{
@@ -133,33 +126,17 @@ $(function(){
 	$(window).on('scroll' ,function(e){
 		let wst = $(window).scrollTop();
 		let wh = $(window).height();
-		let list1 = $('.list1');
-		let list2 = $('.list2');
-		let list3 = $('.list3');
-		let list4 = $('.list4');
-		let list5 = $('.list5');
-		let list6 = $('.list6');
-		let list7 = $('.list7');
-		let link_contact = $('.link_contact');
 		let on = 'on';
 		let off = 'off';
 
-		if(list1.offset().top -200 <= wst ){scroll_event(list1, on);}
-		else if(wst + wh <= list1.offset().top){scroll_event(list1, off);};
-		if(list2.offset().top -200 <= wst ){scroll_event(list2, on);}
-		else if(wst + wh <= list2.offset().top){scroll_event(list2, off);};
-		if(list3.offset().top -200 <= wst ){scroll_event(list3, on);}
-		else if(wst + wh <= list3.offset().top){scroll_event(list3, off);};
-		if(list4.offset().top -200 <= wst ){scroll_event(list4, on);}
-		else if(wst + wh <= list4.offset().top){scroll_event(list4, off);};
-		if(list5.offset().top -200 <= wst ){scroll_event(list5, on);}
-		else if(wst + wh <= list5.offset().top){scroll_event(list5, off);};
-		if(list6.offset().top -200 <= wst ){scroll_event(list6, on);}
-		else if(wst + wh <= list6.offset().top){scroll_event(list6, off);};
-		if(list7.offset().top -200 <= wst ){scroll_event(list7, on);}
-		else if(wst + wh <= list7.offset().top){scroll_event(list7, off);};
-		if(link_contact.offset().top -300 <= wst ){scroll_event(link_contact, on);}
-		else if(wst + wh <= link_contact.offset().top){scroll_event(link_contact, off);};
+		// if(link_contact.offset().top -300 <= wst ){scroll_event(link_contact, on);}
+		// else if(wst + wh <= link_contact.offset().top){scroll_event(link_contact, off);};
+
+		$('.ani').each(function(){
+			let target = $(this);
+			if(target.offset().top -200 <= wst ){scroll_event(target, on);}
+			else if(wst + wh <= target.offset().top){scroll_event(target, off);};
+		});
 
 
 		if(wst!= '0'){
