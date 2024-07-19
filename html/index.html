@@ -42,6 +42,24 @@
 	</header>
 	
 	<div class="content">
+		<section class="ing">
+			<h2>SSG.COM<br>23.06 ~</h2>
+			<div class="thum">
+				<a href="https://www.ssg.com" target="_blank" aria-label="ssg.com 사이트 이동">
+					<img src="../img/img_portfolio11.png" alt="ssg.com">
+					<span class="obj type1"></span>
+				</a>
+			</div>
+		</section>
+		<section class="ani">
+			<h2>삼성카드<br>웹접근성<br>23.02 ~<br>23.06</h2>
+			<div class="thum">
+				<a href="https://www.samsungcard.com/personal/main/UHPPCO0101M0.jsp" target="_blank" aria-label="삼성카드 사이트 이동">
+					<img src="../img/img_portfolio03.png" alt="삼성카드">
+					<span class="obj type1"></span>
+				</a>
+			</div>
+		</section>
 		<section class="ani">
 			<h2>신한<br>마이카<br>22.07~<br>22.12</h2>
 			<div class="thum">
@@ -136,13 +154,13 @@
 	
 	<a target="_blank" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=hyunjin@naver.com" class="link_contact ani" aria-label="메일주소">CONTACT<br>ME<span></span></a>
 
-	<a href="#" class="btn_top">TOP</a>
+	<button class="btn_arr"><span>TOP</span></button>
 </div>
 
 
 </body>
 <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="../js/common.js"></script>
+<!-- <script type="text/javascript" src="../js/common.js"></script> -->
 <script type="text/javascript">
 $(function(){
 	function scroll_event(t, flag){
@@ -153,26 +171,101 @@ $(function(){
 		};
 	};
 	$(window).on('scroll' ,function(e){
-		let wst = $(window).scrollTop();
-		let wh = $(window).height();
-		let on = 'on';
-		let off = 'off';
-
-		// if(link_contact.offset().top -300 <= wst ){scroll_event(link_contact, on);}
-		// else if(wst + wh <= link_contact.offset().top){scroll_event(link_contact, off);};
+		let wst = $(window).scrollTop(),
+			wh = $(window).height(),
+			on = 'on',
+			off = 'off',
+			last_top = $('.link_contact').offset().top,
+			btn_top = $('.btn_arr').offset().top;
 
 		$('.ani').each(function(){
 			let target = $(this);
 			if(target.offset().top -200 <= wst ){scroll_event(target, on);}
 			else if(wst + wh <= target.offset().top){scroll_event(target, off);};
 		});
-
-
-		if(wst!= '0'){
+		
+		if ( wst!= '0' ){
 			$('.header_inner').addClass('on');
 		}else{
 			$('.header_inner').removeClass('on');
 		};
+
+		if( btn_top >= last_top ){
+			$('.btn_arr').addClass('top');
+		}else{
+			$('.btn_arr').removeClass('top');
+		}
+	});
+
+	let pos = [];
+	$('.content  > section').each(function(i){
+		let po = $(this).offset().top;
+		pos[i]= po;
+	});
+	$('.btn_arr').on('click', function() {
+		let n_po = $(this).offset().top;
+		let exit = null;
+		let last_top = $('.link_contact').offset().top;
+
+		$.each(pos, function(i, v) {
+			if (v >= n_po) {
+				exit = v;
+				return false;
+			}
+		});
+
+		if (exit !== null) {
+			$('html, body').animate({
+				scrollTop: exit
+			}, 500);
+		}else{
+			if($(this).hasClass('top')){
+				$('html, body').animate({
+					scrollTop: '0'
+				}, 500);
+			}else{
+				$('html, body').animate({
+					scrollTop: last_top +1
+				}, 500);
+			}
+		}
+	});
+
+	var limits = 15.0;
+
+	$(".wrap section.ing .thum").mousemove(function (e) {
+		var rect = e.target.getBoundingClientRect();
+		var x = e.clientX - rect.left; //x position within the element.
+		var y = e.clientY - rect.top; //y position within the element.
+		var offsetX = x / rect.width;
+		var offsetY = y / rect.height;
+
+		var rotateY = (offsetX) * (limits * 2) - limits;
+		var rotateX = (offsetY) * (limits * 2) - limits;
+
+		var shadowOffsetX = (offsetX) * 32 - 16;
+		var shadowOffsetY = (offsetY) * 32 - 16;
+
+		$(this).css({
+			"box-shadow": (1 / 6) * -shadowOffsetX + "px " + (1 / 6) * -shadowOffsetY + "px 3px rgba(0, 0, 0, 0.051), " +
+			(2 / 6) * -shadowOffsetX + "px " + (2 / 6) * -shadowOffsetY + "px 7.2px rgba(0, 0, 0, 0.073), " +
+			(3 / 6) * -shadowOffsetX + "px " + (3 / 6) * -shadowOffsetY + "px 13.6px rgba(0, 0, 0, 0.09), " +
+			(4 / 6) * -shadowOffsetX + "px " + (4 / 6) * -shadowOffsetY + "px 24.3px rgba(0, 0, 0, 0.107), " +
+			(5 / 6) * -shadowOffsetX + "px " + (5 / 6) * -shadowOffsetY + "px 45.5px rgba(0, 0, 0, 0.129), " +
+			-shadowOffsetX + "px " + -shadowOffsetY + "px 109px rgba(0, 0, 0, 0.18)",
+			transform: "perspective(1000px) rotateX(" + -rotateX + "deg) rotateY(" + rotateY + "deg)"
+		});
+
+		var glarePos = rotateX + rotateY + 90;
+		$(this)
+			.children()
+			.children()
+			.css("left", glarePos + "%");
+		});
+
+		$(".wrap section.ing .thum").mouseleave(function (e) {
+		$(".wrap section.ing .thum").css({"box-shadow": "0px 0px 3px rgba(0, 0, 0, 0.051), 0px 0px 7.2px rgba(0, 0, 0, 0.073), 0px 0px 13.6px rgba(0, 0, 0, 0.09), 0px 0px 24.3px rgba(0, 0, 0, 0.107), 0px 0px 45.5px rgba(0, 0, 0, 0.129), 0px 0px 109px rgba(0, 0, 0, 0.18)", "transform": "scale(1.0)"});
+		$(".glare").css("left", "100%");
 	});
 });
 </script>
